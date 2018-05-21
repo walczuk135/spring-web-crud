@@ -13,11 +13,11 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_person")
     private Long id;
-    @Column(name = "firstname")
+    @Column(nullable =false)
     private String firstName;
-    @Column(name = "lastname")
+    @Column(nullable =false)
     private String lastName;
-    @Column(name = "address")
+    @Column(nullable =false,length = 20)
     private String address;
 
     public Person() {

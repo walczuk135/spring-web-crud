@@ -1,10 +1,15 @@
 package pl.javaspringwebcrud.springwebcrud;
 
+import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.jpa.provider.HibernateUtils;
 import pl.javaspringwebcrud.springwebcrud.PersonDao.PersonDao;
 import pl.javaspringwebcrud.springwebcrud.modelDAO.Person;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class SpringWebCrudApplication {
@@ -17,18 +22,24 @@ public class SpringWebCrudApplication {
 
         PersonDao dao=ctx.getBean(PersonDao.class);
 
-        Person person=new Person("Pawel","Walczuk","Lublin , Jana Pawla II 135");
-        Person person2=new Person("Piotrek","Lin","Krakow , Pana Balcera 22");
-        Person person3=new Person("Leszek","Sakuya","Lubartów");
-        Person person4=new Person("Patryk","Menek","Krakow ");
-        Person person5=new Person("Agnieszka","Golab","Chelm");
+        List<Person> personList = new ArrayList<>();
 
-        dao.save(person);
-        dao.save(person2);
-        dao.save(person3);
-        dao.save(person4);
-        dao.save(person5);
+        personList.add(new Person("Pawel","Walczuk","Lublin"));
+        personList.add(new Person("Piotrek","Lin","Krakow"));
+        personList.add(new Person("Leszek","Sakuya","Lubartów"));
+        personList.add(new Person("Patryk","Menek","Krakow "));
+        personList.add(new Person("Agnieszka","Golab","Chelm"));
 
+
+        PersonDao personDao = ctx.getBean(PersonDao.class);
+        personList.forEach(personDao::save);
+
+       List<Person>allPerson=dao.getAll();
+       allPerson.forEach(System.out::println);
+
+       
+
+        ctx.close();
 
     }
 }

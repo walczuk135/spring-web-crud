@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.javaspringwebcrud.springwebcrud.modelDAO.Person;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 
 @Repository
@@ -17,18 +19,40 @@ public class PersonDao {
     public PersonDao(EntityManager entityManager){
         this.entityManager=entityManager;
     }
+
+    @Transactional
     public void save(Person person){
         entityManager.persist(person);
     }
+
+    @Transactional(readOnly = true)
     public Person get(Long id){
         Person person=entityManager.find(Person.class, id);
         return person;
     }
+
+    @Transactional
     public void update(Person person){
-        entityManager.merge(person);
+        Person find=entityManager.find(Person.class, person.getId());
+        if(find!=null){
+            find.setFirstName(person.getFirstName());
+            find.setLastName(person.getLastName());
+            find.setAddress(person.getAddress());
+        }
     }
-    public void delete(Person person){
-        entityManager.remove(person);
+
+    @Transactional
+    public void delete(Long id){
+        Person personToRemove=entityManager.find(Person.class,id);
+        entityManager.remove(personToRemove);
     }
+
+    public List<Person> getAll(){
+        final String getAll="SELECT p FROM Person p";
+        TypedQuery<Person> getAllquery=entityManager.createQuery(getAll,Person.class);
+        List<Person> resultList=getAllquery.getResultList();
+        return resultList;
+    }
+
 
 }

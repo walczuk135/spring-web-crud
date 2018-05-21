@@ -1,4 +1,4 @@
-package pl.javaspringwebcrud.springwebcrud.modelDAO;
+package pl.javaspringwebcrud.springwebcrud.DAO.modelDAO;
 
 import javax.persistence.*;
 import java.io.Serializable;

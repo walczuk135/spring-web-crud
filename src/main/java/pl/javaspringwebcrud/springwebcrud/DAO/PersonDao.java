@@ -1,9 +1,9 @@
-package pl.javaspringwebcrud.springwebcrud.PersonDao;
+package pl.javaspringwebcrud.springwebcrud.DAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.javaspringwebcrud.springwebcrud.modelDAO.Person;
+import pl.javaspringwebcrud.springwebcrud.DAO.modelDAO.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

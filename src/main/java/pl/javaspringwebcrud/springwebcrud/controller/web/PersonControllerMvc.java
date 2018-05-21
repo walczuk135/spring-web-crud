@@ -11,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.javaspringwebcrud.springwebcrud.dao.PersonDao;
 import pl.javaspringwebcrud.springwebcrud.model.Person;
 
-import javax.xml.ws.Action;
 import java.util.List;
 
 @Controller
@@ -34,7 +33,7 @@ public class PersonControllerMvc {
     @PostMapping
     public String addCity(@ModelAttribute Person personModel, RedirectAttributes redirectAttributes){
         personDao.save(personModel);
-        redirectAttributes.addFlashAttribute("message","City added successfuly");
+        redirectAttributes.addFlashAttribute("message","Person added successfuly");
         return "redirect:/";
     }
 

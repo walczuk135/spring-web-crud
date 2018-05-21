@@ -1,12 +1,10 @@
 package pl.javaspringwebcrud.springwebcrud;
 
-import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.data.jpa.provider.HibernateUtils;
-import pl.javaspringwebcrud.springwebcrud.PersonDao.PersonDao;
-import pl.javaspringwebcrud.springwebcrud.modelDAO.Person;
+import pl.javaspringwebcrud.springwebcrud.dao.PersonDao;
+import pl.javaspringwebcrud.springwebcrud.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +14,7 @@ public class SpringWebCrudApplication {
 
 
     public static void main(String[] args) throws InterruptedException {
-        //SpringApplication.run(SpringWebCrudApplication.class, args);
+        SpringApplication.run(SpringWebCrudApplication.class, args);
         ConfigurableApplicationContext ctx =
                 SpringApplication.run(SpringWebCrudApplication.class, args);
 
@@ -37,7 +35,7 @@ public class SpringWebCrudApplication {
        List<Person>allPerson=dao.getAll();
        allPerson.forEach(System.out::println);
 
-       
+
 
         ctx.close();
 

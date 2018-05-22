@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cities")
+@RequestMapping("/api/persons")
 public class PersonControllerRest {
     private PersonDao personDao;
 

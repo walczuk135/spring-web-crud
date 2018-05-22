@@ -12,7 +12,7 @@
                 <th>Last name</th>
                 <th>Address</th>
             </tr>
-            <tr th:each="city:${personList}">
+            <tr th:each="person:${personList}">
                 <td th:text="${person.firstName}"></td>
                 <td th:text="${person.lastName}"></td>
                 <td th:text="${person.address}"></td>

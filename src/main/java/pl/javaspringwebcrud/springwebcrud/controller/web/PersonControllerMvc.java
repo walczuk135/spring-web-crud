@@ -14,7 +14,7 @@ import pl.javaspringwebcrud.springwebcrud.model.Person;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping("/person")
 public class PersonControllerMvc {
     private PersonDao personDao;
 

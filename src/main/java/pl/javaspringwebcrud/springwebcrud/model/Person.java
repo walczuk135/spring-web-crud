@@ -1,16 +1,17 @@
 package pl.javaspringwebcrud.springwebcrud.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
+@XmlRootElement
 @Entity
-@Table(name="person")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 4275113917674026576L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name="id_person")
     private Long id;
     @Column(nullable =false)
